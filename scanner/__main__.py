@@ -1,10 +1,14 @@
+import argparse
 from host_discovery import discover_hosts
 import sys
 
 
-
 def main():
-    hosts = discover_hosts(sys.argv[1])
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--ip', type=str, required=True)
+    args = parser.parse_args()
+
+    hosts = discover_hosts(args.ip)
     print(hosts)
 
 
